@@ -6,9 +6,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -32,8 +34,8 @@ public class Product {
     @Column(name = "discounted_price")
     private int discountedPrice;
 
-    @Column(name = "discount_present")
-    private int discountPresent;
+    @Column(name = "discount_precent")
+    private int discountPrecent;
 
     @Column(name = "quantity")
     private int quantity;
@@ -54,5 +56,17 @@ public class Product {
 
     @OneToMany(mappedBy = "product",cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Rating> ratings = new ArrayList<>();
+
+    @OneToMany(mappedBy = "product",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<Review> reviews = new ArrayList<>();
+
+    @Column(name = "num_ratings")
+    private int numRatings;
+
+    @ManyToOne
+    @JoinColumn(name = "catigory_id")
+    private Category category;
+
+    private LocalDateTime createdAt;
 
 }

@@ -1,4 +1,10 @@
 package com.aditya.ecommerce.application.repository;
 
-public interface UserRepository {
+import com.aditya.ecommerce.application.model.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+
+public interface UserRepository extends JpaRepository<User,Long> {
+    public User findByEmail(String email);
+    
 }

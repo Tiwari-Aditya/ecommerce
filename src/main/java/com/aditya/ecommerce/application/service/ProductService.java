@@ -1,4 +1,10 @@
 package com.aditya.ecommerce.application.service;
 
-public class ProductService {
+import com.aditya.ecommerce.application.model.Product;
+import com.aditya.ecommerce.application.request.CreateProductRequest;
+
+public interface ProductService {
+
+
+     Product createProduct(CreateProductRequest request);
 }
