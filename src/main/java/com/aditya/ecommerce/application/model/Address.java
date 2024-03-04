@@ -1,36 +1,47 @@
 package com.aditya.ecommerce.application.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-//@Entity
-//@Setter
-//@Getter
-//@NoArgsConstructor
-//@AllArgsConstructor
-//@Table(name = "addresses")
+@Entity
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "addresses")
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Street can not be blank")
-    @Size(max = 255, message = "Street must be at most 255 characters")
+    @Column(name = "first_name")
+    private String firstName;
+
+    @Column(name = "last_name")
+    private String lastName;
+
     @Column(name = "street")
     private String street;
 
-    @NotBlank(message = "City can not be blank")
-    @Size(max = 100 ,message = "City must be at most 100 character")
-    @Column()
+    @Column(name = "city")
     private String city;
 
+    @Column(name = "state")
     private String state;
+
+    @Column(name = "zip_code")
     private String zipcode;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    @JsonIgnore
+    private User user;
+
+    private String mobile;
 
 
 }
