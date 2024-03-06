@@ -24,7 +24,7 @@ public class Category {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "parent_category_id")
-    private Category category;
+    private Category parentCategory;
 
     private int level;
 
