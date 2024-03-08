@@ -2,6 +2,7 @@ package com.aditya.ecommerce.application.service;
 
 import com.aditya.ecommerce.application.config.JwtProvider;
 import com.aditya.ecommerce.application.exception.UserException;
+import com.aditya.ecommerce.application.model.Cart;
 import com.aditya.ecommerce.application.model.User;
 import com.aditya.ecommerce.application.repository.UserRepository;
 import com.aditya.ecommerce.application.request.LoginRequest;
@@ -21,6 +22,7 @@ public class AuthService {
     private final JwtProvider jwtProvider;
     private final CustomUserServiceImplementation customUserService;
     private final PasswordEncoder passwordEncoder;
+    private final CartService cartService;
 
     public String createUserHandler(User user) throws UserException {
         String email = user.getEmail();
@@ -36,6 +38,7 @@ public class AuthService {
         createdUser.setPassword(passwordEncoder.encode(password));
 
         User savedUser = userRepository.save(createdUser);
+        Cart cart = cartService.creatCart(user);
 
         Authentication authentication = new UsernamePasswordAuthenticationToken(savedUser.getEmail(), savedUser.getPassword());
         SecurityContextHolder.getContext().setAuthentication(authentication);
