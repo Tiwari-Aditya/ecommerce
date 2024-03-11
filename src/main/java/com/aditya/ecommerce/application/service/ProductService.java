@@ -21,4 +21,6 @@ public interface ProductService {
     List<Product> findProductByCategory(String category);
 
     Page<Product> getAllProduct(String category, List<String> colors, List<String> sizes, Integer minPrice, Integer maxPrice, Integer minDiscount, String sort, String stock, Integer pageNumber, Integer pageSize);
+
+    List<Product> findAllProducts();
 }

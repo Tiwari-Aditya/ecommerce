@@ -10,7 +10,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity(name = "order_table")
+@Entity
+@Table(name = "orders")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -33,7 +34,7 @@ public class Order {
     private PaymentDetails paymentDetails = new PaymentDetails();
     private double totalPrice;
     private Integer totalDiscountedPrice;
-    private Integer discount;
+    private Integer discounte;
     private String orderStatus;
     private int totalItem;
     private LocalDateTime createdAt;

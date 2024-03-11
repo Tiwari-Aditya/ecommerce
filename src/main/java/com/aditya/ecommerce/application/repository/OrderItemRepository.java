@@ -1,5 +1,6 @@
 package com.aditya.ecommerce.application.repository;
 
+import com.aditya.ecommerce.application.model.Order;
 import com.aditya.ecommerce.application.model.OrderItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

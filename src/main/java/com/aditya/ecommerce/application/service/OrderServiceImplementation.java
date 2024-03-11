@@ -6,6 +6,7 @@ import com.aditya.ecommerce.application.repository.AddressRepository;
 import com.aditya.ecommerce.application.repository.OrderItemRepository;
 import com.aditya.ecommerce.application.repository.OrderRepository;
 import com.aditya.ecommerce.application.repository.UserRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +26,7 @@ public class OrderServiceImplementation implements OrderService {
     private final OrderItemRepository orderItemRepository;
 
     @Override
+    @Transactional
     public Order createOrder(User user, Address shippingAddress) {
         shippingAddress.setUser(user);
         Address address = addressRepository.save(shippingAddress);
@@ -55,7 +57,7 @@ public class OrderServiceImplementation implements OrderService {
         createdOrder.setOrderItems(orderItems);
         createdOrder.setTotalPrice(cart.getTotalPrice());
         createdOrder.setTotalDiscountedPrice(cart.getTotalDiscountedPrice());
-        createdOrder.setDiscount(cart.getDiscounte());
+        createdOrder.setDiscounte(cart.getDiscounte());
         createdOrder.setTotalItem(cart.getTotalItem());
 
         createdOrder.setShippingAddress(address);
@@ -82,8 +84,7 @@ public class OrderServiceImplementation implements OrderService {
 
     @Override
     public List<Order> userOrderHistory(Long userId) {
-        List<Order> orders = orderRepository.getUsersOrders(userId);
-        return orders;
+        return orderRepository.getUsersOrders(userId);
     }
 
     @Override
