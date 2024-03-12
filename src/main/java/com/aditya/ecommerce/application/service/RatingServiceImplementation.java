@@ -7,10 +7,11 @@ import com.aditya.ecommerce.application.model.User;
 import com.aditya.ecommerce.application.repository.RatingRepository;
 import com.aditya.ecommerce.application.request.RatingRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
-
+@Service
 @RequiredArgsConstructor
 public class RatingServiceImplementation implements RatingService {
     private final RatingRepository ratingRepository;

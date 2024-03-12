@@ -15,6 +15,7 @@ import java.util.List;
 @RequestMapping("/api")
 @RequiredArgsConstructor
 public class ProductController {
+
     private final ProductService productService;
 
     @GetMapping("/products")
@@ -34,10 +35,6 @@ public class ProductController {
         return new ResponseEntity<>(product, HttpStatus.ACCEPTED);
     }
 
-//    @GetMapping("/product/search")
-//    public ResponseEntity<List<Product>> searchProductHandler(@RequestParam String q){
-//        List<Product> products = productService.searchProduct(q);
-//        return new ResponseEntity<List<Product>>(products,HttpStatus.OK);
-//    }
+
 
 }

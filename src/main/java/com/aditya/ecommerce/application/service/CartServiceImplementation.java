@@ -19,7 +19,7 @@ public class CartServiceImplementation implements CartService {
     private final ProductService productService;
 
     @Override
-    public Cart creatCart(User user) {
+    public Cart createCart(User user) {
         Cart cart = new Cart();
         cart.setUser(user);
         return cartRepository.save(cart);

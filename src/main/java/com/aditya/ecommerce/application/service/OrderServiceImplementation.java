@@ -26,7 +26,6 @@ public class OrderServiceImplementation implements OrderService {
     private final OrderItemRepository orderItemRepository;
 
     @Override
-    @Transactional
     public Order createOrder(User user, Address shippingAddress) {
         shippingAddress.setUser(user);
         Address address = addressRepository.save(shippingAddress);
