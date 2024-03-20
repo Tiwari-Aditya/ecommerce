@@ -1,5 +1,7 @@
 package com.aditya.ecommerce.application.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,6 +23,7 @@ public class Cart {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id" )
+    @JsonIgnoreProperties("cart")
     private User user;
 
     @OneToMany(mappedBy = "cart" ,cascade = CascadeType.ALL,orphanRemoval = true)

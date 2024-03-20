@@ -18,6 +18,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
             "CASE WHEN :sort = 'price_low' THEN p.discountedPrice END ASC, " +
             "CASE WHEN :sort = 'price_high' THEN p.discountedPrice END DESC"
     )
+
     List<Product> filterProduct(
             @Param("category") String category,
             @Param("minPrice") Integer minPrice,
